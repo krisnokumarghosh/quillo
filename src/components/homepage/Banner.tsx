@@ -51,7 +51,7 @@ const Banner = () => {
   }, []);
 
   return (
-    <section className="relative w-full  min-h-screen overflow-x-hidden bg-linear-to-b from-[#778DA9]/25 via-[#E0E1DD]/40 to-white pt-40 pb-24 ">
+    <section className="relative w-full  min-h-screen overflow-x-hidden bg-linear-to-b from-[#778DA9]/25 via-[#E0E1DD]/40 to-white pt-27 md:pt-40 pb-12 md:pb-24 ">
       <h1
         className={`${manropeFont.className} text-center text-4xl md:text-5xl font-bold text-[#0D1B2A] tracking-tight mb-4 px-6`}
       >
@@ -60,7 +60,7 @@ const Banner = () => {
         Ideas &amp; Innovation
       </h1>
 
-      <p className="text-center text-[#1B263B]/70 max-w-md mx-auto mb-16 px-6">
+      <p className="text-center text-[#1B263B]/70 max-w-md mx-auto mb-8 md:mb-16 px-6">
         Explore expert articles, tech trends, and practical tips to keep your
         business ahead of the curve.
       </p>
@@ -122,7 +122,7 @@ const Banner = () => {
         </Swiper>
       </div>
 
-      <div className="flex justify-center mt-12">
+      <div className="flex justify-center mt-6 md:mt-12">
         <Button className="group h-13   rounded-full bg-[#0D1B2A] hover:bg-[#1B263B] text-[#E0E1DD] pl-5 pr-1.5 shadow-[0_12px_35px_rgba(13,27,42,0.18)] transition-all duration-300">
           <span className="text-lg font-semibold tracking-tight">
             Read Blogs
