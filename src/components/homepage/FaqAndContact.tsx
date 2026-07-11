@@ -83,7 +83,7 @@ const FaqAndContact = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="relative w-full bg-white py-20 md:py-28 px-6">
+    <section className="relative w-full bg-white py-15 md:py-28 px-6">
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <motion.div
@@ -97,7 +97,7 @@ const FaqAndContact = () => {
             FAQ &amp; Contact
           </span>
           <h2
-            className={`${manropeFont.className} text-3xl md:text-4xl font-bold text-[#0D1B2A] tracking-tight`}
+            className={`${manropeFont.className} text-2xl md:text-4xl font-bold text-[#0D1B2A] tracking-tight`}
           >
             Questions? We&apos;ve got answers.
           </h2>

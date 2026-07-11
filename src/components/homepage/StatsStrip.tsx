@@ -57,7 +57,7 @@ const item = {
 
 const StatsStrip = () => {
   return (
-    <section className="relative w-full py-20 md:py-28 px-6">
+    <section className="relative w-full py-15 md:py-28 px-6">
       <div className="relative max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -70,7 +70,7 @@ const StatsStrip = () => {
             By The Numbers
           </span>
           <h2
-            className={`${manropeFont.className} text-3xl md:text-4xl font-bold text-[#0D1B2A] tracking-tight`}
+            className={`${manropeFont.className} text-2xl md:text-4xl font-bold text-[#0D1B2A] tracking-tight`}
           >
             Growing every single day.
           </h2>
@@ -81,7 +81,7 @@ const StatsStrip = () => {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.3 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6"
+          className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6"
         >
           {stats.map((stat) => {
             const Icon = stat.icon;

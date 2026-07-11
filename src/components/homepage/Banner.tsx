@@ -51,9 +51,9 @@ const Banner = () => {
   }, []);
 
   return (
-    <section className="relative w-full  min-h-screen overflow-x-hidden bg-linear-to-b from-[#778DA9]/25 via-[#E0E1DD]/40 to-white pt-27 md:pt-40 pb-12 md:pb-24 ">
+    <section className="relative w-full  min-h-screen overflow-hidden bg-linear-to-b from-[#778DA9]/25 via-[#E0E1DD]/40 to-white pt-27 md:pt-40 pb-12 md:pb-24 ">
       <h1
-        className={`${manropeFont.className} text-center text-4xl md:text-5xl font-bold text-[#0D1B2A] tracking-tight mb-4 px-6`}
+        className={`${manropeFont.className} text-center text-3xl md:text-5xl font-bold text-[#0D1B2A] tracking-tight mb-4 px-6`}
       >
         Insights,
         <br />
@@ -66,7 +66,7 @@ const Banner = () => {
       </p>
 
       <div
-        className="relative w-full lg:w-350 mx-auto"
+        className="relative w-full lg:w-350 mx-auto overflow-hidden "
         style={{
           maskImage:
             "linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%)",

@@ -8,7 +8,7 @@ import Link from "next/link";
 
 const CTABanner = () => {
   return (
-    <section className="relative w-full bg-white py-16 md:py-24 px-6">
+    <section className="relative w-full bg-white py-15 md:py-24 px-4 md:px-6">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -17,8 +17,8 @@ const CTABanner = () => {
         className="relative max-w-5xl mx-auto rounded-[2.5rem] bg-[#0D1B2A] overflow-hidden px-8 py-16 md:px-16 md:py-20"
       >
         {/* Background glows */}
-        <div className="absolute top-0 left-1/4 w-[400px] h-[400px] bg-[#415A77]/30 blur-[120px] rounded-full pointer-events-none" />
-        <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-[#778DA9]/20 blur-[120px] rounded-full pointer-events-none" />
+        <div className="absolute top-0 left-1/4 w-100 h-100 bg-[#415A77]/30 blur-[120px] rounded-full pointer-events-none" />
+        <div className="absolute bottom-0 right-1/4 w-100 h-100 bg-[#778DA9]/20 blur-[120px] rounded-full pointer-events-none" />
 
         {/* Faint grid texture */}
         <div
@@ -36,7 +36,7 @@ const CTABanner = () => {
           </span>
 
           <h2
-            className={`${manropeFont.className} text-3xl md:text-5xl font-bold text-[#E0E1DD] tracking-tight leading-tight mb-6`}
+            className={`${manropeFont.className} text-2xl md:text-5xl font-bold text-[#E0E1DD] tracking-tight leading-tight mb-6`}
           >
             Your story deserves
             <br />

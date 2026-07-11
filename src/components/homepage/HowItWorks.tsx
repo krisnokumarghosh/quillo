@@ -47,7 +47,7 @@ const item: Variants = {
 };
 const HowItWorks = () => {
   return (
-    <section className="relative w-full bg-white py-20 md:py-28 px-6 overflow-hidden">
+    <section className="relative w-full bg-white py-15 md:py-28 px-6 overflow-hidden">
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <motion.div
@@ -61,7 +61,7 @@ const HowItWorks = () => {
             How It Works
           </span>
           <h2
-            className={`${manropeFont.className} text-3xl md:text-4xl font-bold text-[#0D1B2A] tracking-tight`}
+            className={`${manropeFont.className} text-2xl md:text-4xl font-bold text-[#0D1B2A] tracking-tight`}
           >
             From idea to published,
             <br />
