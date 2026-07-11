@@ -1,4 +1,5 @@
 import Banner from "@/components/homepage/Banner";
+import CTABanner from "@/components/homepage/CTABanner";
 import FaqAndContact from "@/components/homepage/FaqAndContact";
 import HowItWorks from "@/components/homepage/HowItWorks";
 import StatsStrip from "@/components/homepage/StatsStrip";
@@ -14,6 +15,7 @@ export default function Home() {
       <HowItWorks/>
       <StatsStrip/>
       <FaqAndContact/>
+      <CTABanner/>
     </div>
   );
 }
