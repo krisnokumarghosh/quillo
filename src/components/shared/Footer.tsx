@@ -144,7 +144,7 @@ const Footer = () => {
                 whileHover={{ scale: 1.08, rotate: 45 }}
                 whileTap={{ scale: 0.95 }}
                 transition={{ type: "spring", stiffness: 300, damping: 15 }}
-                className="flex items-center justify-center w-9 h-9 rounded-full bg-[#E0E1DD] text-[#0D1B2A] flex-shrink-0"
+                className="flex items-center justify-center w-9 h-9 rounded-full bg-[#E0E1DD] text-[#0D1B2A] shrink-0"
               >
                 <ArrowRight className="w-4 h-4" />
               </motion.button>
