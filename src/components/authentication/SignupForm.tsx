@@ -1,6 +1,8 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
 import { manropeFont } from "@/lib/fonts";
+import { errorToast, successToast } from "@/lib/toasts";
 import { ArrowUpRight } from "@gravity-ui/icons";
 import {
   Button,
@@ -12,6 +14,7 @@ import {
 } from "@heroui/react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 
@@ -23,15 +26,38 @@ const labelStyles = "text-sm font-semibold text-[#0D1B2A] mb-1.5 block";
 const SignupForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const onSubmit = (e: React.SyntheticEvent<HTMLFormElement>) => {
+  const handleRegister = async (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
+    try {
+      const formData = new FormData(e.currentTarget);
+      const name = formData.get("name") as string;
+      const email = formData.get("email") as string;
+      const password = formData.get("password") as string;
+      const photoUrl = (formData.get("photoUrl") as string) || undefined;
 
-    const formData = Object.fromEntries(new FormData(e.currentTarget));
-    console.log(formData);
-    setIsSubmitting(false);
+      const { data, error } = await authClient.signUp.email({
+        name,
+        email,
+        password,
+        image: photoUrl,
+      });
 
-    // TODO: connect to backend API route
+      if (data) {
+        successToast("Registration Successfull");
+        redirect("/");
+      } else if (error) {
+        errorToast(error.message ?? "Something went wrong during signup");
+      }
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleGoogleSignup = async () => {
+    const data = await authClient.signIn.social({
+      provider: "google",
+    });
   };
 
   return (
@@ -71,7 +97,10 @@ const SignupForm = () => {
           </div>
 
           {/* Google Sign Up */}
-          <Button className="w-full flex items-center justify-center gap-2.5 h-11 rounded-full border border-[#778DA9]/25 bg-white hover:bg-[#E0E1DD]/40 text-[#0D1B2A] text-sm font-semibold transition-colors duration-200 mb-5">
+          <Button
+            onClick={handleGoogleSignup}
+            className="w-full flex items-center justify-center gap-2.5 h-11 rounded-full border border-[#778DA9]/25 bg-white hover:bg-[#E0E1DD]/40 text-[#0D1B2A] text-sm font-semibold transition-colors duration-200 mb-5"
+          >
             <FcGoogle className="w-4.5 h-4.5" />
             Continue with Google
           </Button>
@@ -84,7 +113,7 @@ const SignupForm = () => {
           </div>
 
           {/* Form */}
-          <Form className="flex flex-col gap-4" onSubmit={onSubmit}>
+          <Form className="flex flex-col gap-4" onSubmit={handleRegister}>
             <TextField isRequired name="name" type="text">
               <Label className={labelStyles}>Full Name</Label>
               <Input placeholder="Your name" className={inputStyles} />

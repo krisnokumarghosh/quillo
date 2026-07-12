@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { Toast } from "@heroui/react";
 
 const interFont = Inter({
   subsets: ["latin"],
@@ -22,6 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${interFont.className} h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-[#F8FAFC] overflow-x-hidden">
+         <Toast.Provider  />
         <main>{children}</main>
       </body>
     </html>

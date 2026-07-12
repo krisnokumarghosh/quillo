@@ -1,7 +1,9 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
 import { manropeFont } from "@/lib/fonts";
-import { ArrowUpRight } from "@gravity-ui/icons";
+import { errorToast, successToast } from "@/lib/toasts";
+import { ArrowUpRight,  } from "@gravity-ui/icons";
 import {
   Button,
   FieldError,
@@ -9,9 +11,11 @@ import {
   Input,
   Label,
   TextField,
+
 } from "@heroui/react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 
@@ -23,15 +27,35 @@ const labelStyles = "text-sm font-semibold text-[#0D1B2A] mb-1.5 block";
 const LoginForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const onSubmit = (e: React.SyntheticEvent<HTMLFormElement>) => {
+  const handleLogin = async (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
+    try {
+      const formData = new FormData(e.currentTarget);
 
-    const formData = Object.fromEntries(new FormData(e.currentTarget));
-    console.log(formData);
-    setIsSubmitting(false);
+      const email = formData.get("email") as string;
+      const password = formData.get("password") as string;
 
-    // TODO: connect to backend API route
+      const { data, error } = await authClient.signIn.email({
+        email,
+        password,
+      });
+
+      if (data) {
+        successToast("Login Successfull");
+        redirect("/");
+      } else if (error) {
+        errorToast(error.message ?? "Something went wrong during signup");
+      }
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleGoogleSignup = async () => {
+    const data = await authClient.signIn.social({
+      provider: "google",
+    });
   };
 
   return (
@@ -71,7 +95,10 @@ const LoginForm = () => {
           </div>
 
           {/* Google Sign Up */}
-          <Button className="w-full flex items-center justify-center gap-2.5 h-11 rounded-full border border-[#778DA9]/25 bg-white hover:bg-[#E0E1DD]/40 text-[#0D1B2A] text-sm font-semibold transition-colors duration-200 mb-5">
+          <Button
+            onClick={handleGoogleSignup}
+            className="w-full flex items-center justify-center gap-2.5 h-11 rounded-full border border-[#778DA9]/25 bg-white hover:bg-[#E0E1DD]/40 text-[#0D1B2A] text-sm font-semibold transition-colors duration-200 mb-5"
+          >
             <FcGoogle className="w-4.5 h-4.5" />
             Continue with Google
           </Button>
@@ -84,7 +111,7 @@ const LoginForm = () => {
           </div>
 
           {/* Form */}
-          <Form className="flex flex-col gap-4" onSubmit={onSubmit}>
+          <Form className="flex flex-col gap-4" onSubmit={handleLogin}>
             <TextField
               isRequired
               name="email"
@@ -97,7 +124,7 @@ const LoginForm = () => {
               }}
             >
               <Label className={labelStyles}>Email</Label>
-              <Input placeholder="you@example.com" className={inputStyles} />
+              <Input placeholder="Enter Your Email" className={inputStyles} />
               <FieldError className="text-xs text-red-500 mt-1" />
             </TextField>
 
@@ -120,7 +147,7 @@ const LoginForm = () => {
                 </span>
               </Label>
               <Input
-                placeholder="Create a strong password"
+                placeholder="Enter Your Password"
                 className={inputStyles}
               />
               <FieldError className="text-xs text-red-500 mt-1" />
