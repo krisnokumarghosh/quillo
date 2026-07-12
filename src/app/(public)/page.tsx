@@ -2,6 +2,7 @@ import Banner from "@/components/homepage/Banner";
 import CTABanner from "@/components/homepage/CTABanner";
 import FaqAndContact from "@/components/homepage/FaqAndContact";
 import HowItWorks from "@/components/homepage/HowItWorks";
+import ShutterReveal from "@/components/homepage/ShutterReveal";
 import StatsStrip from "@/components/homepage/StatsStrip";
 import { Metadata } from "next";
 
@@ -14,10 +15,12 @@ export default function Home() {
   return (
     <div>
       <Banner />
-      <HowItWorks />
+      <ShutterReveal>
+        <HowItWorks />
       <StatsStrip />
       <FaqAndContact />
       <CTABanner />
+      </ShutterReveal>
     </div>
   );
 }
