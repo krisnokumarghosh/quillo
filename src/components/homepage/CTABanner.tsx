@@ -49,7 +49,7 @@ const CTABanner = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link href="/register">
+            <Link href="/dashboard/user/add-blog">
               <Button className="group h-13 rounded-full bg-[#E0E1DD] hover:bg-[#E0E1DD]/90 text-[#0D1B2A] pl-6 pr-2 shadow-[0_12px_35px_rgba(0,0,0,0.25)] transition-all duration-300">
                 <span className="text-base font-semibold tracking-tight">
                   Start Writing

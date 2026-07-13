@@ -11,6 +11,7 @@ import "swiper/css";
 import "swiper/css/effect-coverflow";
 import { ArrowUpRight } from "@gravity-ui/icons";
 import { Button } from "@heroui/react";
+import Link from "next/link";
 
 const images = [
   "https://assets.lummi.ai/assets/QmR9SES2yz9fPSYajDXbUdabbTTbkhx3qcwYJ9RXYv8W9z?auto=format&w=1500",
@@ -123,15 +124,17 @@ const Banner = () => {
       </div>
 
       <div className="flex justify-center mt-6 md:mt-12">
-        <Button className="group h-13   rounded-full bg-[#0D1B2A] hover:bg-[#1B263B] text-[#E0E1DD] pl-5 pr-1.5 shadow-[0_12px_35px_rgba(13,27,42,0.18)] transition-all duration-300">
-          <span className="text-lg font-semibold tracking-tight">
-            Read Blogs
-          </span>
+        <Link href={"/blogs"}>
+          <Button className="group h-13   rounded-full bg-[#0D1B2A] hover:bg-[#1B263B] text-[#E0E1DD] pl-5 pr-1.5 shadow-[0_12px_35px_rgba(13,27,42,0.18)] transition-all duration-300">
+            <span className="text-lg font-semibold tracking-tight">
+              Read Blogs
+            </span>
 
-          <span className="ml-4 flex h-10 w-10 items-center justify-center rounded-full bg-[#E0E1DD] text-[#0D1B2A] transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:rotate-6">
-            <ArrowUpRight className="w-6 h-6" />
-          </span>
-        </Button>
+            <span className="ml-4 flex h-10 w-10 items-center justify-center rounded-full bg-[#E0E1DD] text-[#0D1B2A] transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:rotate-6">
+              <ArrowUpRight className="w-6 h-6" />
+            </span>
+          </Button>
+        </Link>
       </div>
     </section>
   );
