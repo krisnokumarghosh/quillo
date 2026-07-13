@@ -11,8 +11,8 @@ import { authClient } from "@/lib/auth-client";
 const navLinks = [
   { name: "Home", href: "/", authRequired: false },
   { name: "Blogs", href: "/blogs", authRequired: false },
-  { name: "Dashboard", href: "/dashboard", authRequired: true },
   { name: "My Posts", href: "/my-posts", authRequired: true },
+  { name: "Dashboard", href: "/dashboard", authRequired: true },
 ];
 
 const Navbar = () => {
@@ -24,12 +24,23 @@ const Navbar = () => {
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
-  const visibleLinks = navLinks.filter((link) => !link.authRequired || user);
+  const visibleLinks = navLinks
+    .filter((link) => !link.authRequired || user)
+    .filter((link) => !(link.href === "/my-posts" && user?.role === "admin"))
+    .map((link) =>
+      link.href === "/dashboard"
+        ? {
+            ...link,
+            href:
+              user?.role === "admin" ? "/dashboard/admin" : "/dashboard/user",
+          }
+        : link,
+    );
 
   const handleLogOut = async () => {
     await authClient.signOut();
-    redirect("/")
-  }
+    redirect("/");
+  };
 
   return (
     <header className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[92%] max-w-5xl">
@@ -75,7 +86,10 @@ const Navbar = () => {
               Loading...
             </span>
           ) : user ? (
-            <Button onClick={handleLogOut} className="bg-[#0D1B2A] text-[#E0E1DD] hover:bg-[#0D1B2A]/95 shadow-lg">
+            <Button
+              onClick={handleLogOut}
+              className="bg-[#0D1B2A] text-[#E0E1DD] hover:bg-[#0D1B2A]/95 shadow-lg"
+            >
               Logout
             </Button>
           ) : (
@@ -163,7 +177,10 @@ const Navbar = () => {
                             Loading...
                           </span>
                         ) : user ? (
-                          <Button onClick={handleLogOut} className="group w-full h-11 rounded-full bg-[#E0E1DD] hover:bg-[#E0E1DD]/90 text-[#0D1B2A] transition-all duration-300">
+                          <Button
+                            onClick={handleLogOut}
+                            className="group w-full h-11 rounded-full bg-[#E0E1DD] hover:bg-[#E0E1DD]/90 text-[#0D1B2A] transition-all duration-300"
+                          >
                             <span className="flex items-center justify-center gap-2">
                               Logout
                               <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />

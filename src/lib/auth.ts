@@ -41,4 +41,15 @@ export const auth = betterAuth({
       clientSecret: googleClientSecret,
     },
   },
+
+  user: {
+    additionalFields: {
+      role: {
+        type: "string",
+        required: false,
+        defaultValue: "user",
+        input: false,
+      },
+    },
+  },
 });
