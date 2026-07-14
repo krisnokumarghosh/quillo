@@ -20,7 +20,7 @@ type UserRole = "user" | "admin";
 interface SidebarUser {
   name: string;
   email: string;
-  image?: string;
+  image?: string | null;
   role: UserRole;
 }
 

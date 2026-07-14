@@ -2,11 +2,12 @@
 
 import { manropeFont } from "@/lib/fonts";
 import { ArrowRightFromSquare, ArrowUpRight, Bars } from "@gravity-ui/icons";
-import { Button, Drawer } from "@heroui/react";
+import { Avatar, Button, Drawer } from "@heroui/react";
 import Link from "next/link";
 import { redirect, usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { authClient } from "@/lib/auth-client";
+import Image from "next/image";
 
 const navLinks = [
   { name: "Home", href: "/", authRequired: false },
@@ -86,12 +87,31 @@ const Navbar = () => {
               Loading...
             </span>
           ) : user ? (
-            <Button
-              onClick={handleLogOut}
-              className="bg-[#0D1B2A] text-[#E0E1DD] hover:bg-[#0D1B2A]/95 shadow-lg"
-            >
-              Logout
-            </Button>
+            <div className="flex items-center gap-5">
+              {user?.image ? (
+                <Image
+                  alt="user image"
+                  height={35}
+                  width={35}
+                  src={user?.image}
+                  className="rounded-full"
+                />
+              ) : (
+                <Avatar>
+                  <Avatar.Fallback>
+                    {" "}
+                    {user?.name?.[0]?.toUpperCase() ?? "U"}
+                  </Avatar.Fallback>
+                </Avatar>
+              )}
+
+              <Button
+                onClick={handleLogOut}
+                className="bg-[#0D1B2A] text-[#E0E1DD] hover:bg-[#0D1B2A]/95 shadow-lg"
+              >
+                Logout
+              </Button>
+            </div>
           ) : (
             <div className="flex items-center gap-5">
               <Link href={"/login"}>

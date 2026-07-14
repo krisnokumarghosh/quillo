@@ -1,6 +1,11 @@
 import UserProfile from "@/components/dashboard/user/UserProfile";
 import { getUserSession } from "@/lib/core/session";
+import { Metadata } from "next";
 import { redirect } from "next/navigation";
+
+export const metadata: Metadata = {
+  title: "Profile | User",
+};
 
 const UserProfilePage = async () => {
   const rawUser = await getUserSession();

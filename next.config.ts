@@ -4,11 +4,12 @@ const nextConfig: NextConfig = {
   /* config options here */
   reactCompiler: true,
   images: {
-     unoptimized: true,
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "assets.lummi.ai",
+        hostname: "**",
+        port: "",
       },
     ],
   },
