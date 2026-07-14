@@ -1,5 +1,5 @@
 import { serverFetch } from "../core/server";
-import { Blog, GetAllBlogsParams, GetAllBlogsResponse } from "../dataInterface";
+import { Blog, GetAllBlogsParams, GetAllBlogsResponse, User } from "../dataInterface";
 
 export const getBlogsById = async (userId: string) => {
   return serverFetch<Blog[]>(`/api/blogs/uid/${userId}`);
@@ -24,4 +24,8 @@ export const getAllBlogs = async ({
 
 export const getBlogById = async (blogId: string) => {
   return serverFetch<Blog>(`/api/blog/${blogId}`)
+}
+
+export const getAllUsers = async () => {
+  return serverFetch<User[]>("/api/users")
 }

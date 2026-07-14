@@ -46,3 +46,14 @@ export type Props = {
     id: string;
   }>;
 };
+
+export interface User {
+  id: string;
+  name: string;
+  email: string;
+  emailVerified: boolean;
+  image?: string | null;
+  role?: string | null;
+  createdAt: string;
+  updatedAt: string;
+}
