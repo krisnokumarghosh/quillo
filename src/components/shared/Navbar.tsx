@@ -27,7 +27,10 @@ const Navbar = () => {
 
   const visibleLinks = navLinks
     .filter((link) => !link.authRequired || user)
-    .filter((link) => !(link.href === "/dashboard/user/my-blogs" && user?.role === "admin"))
+    .filter(
+      (link) =>
+        !(link.href === "/dashboard/user/my-blogs" && user?.role === "admin"),
+    )
     .map((link) =>
       link.href === "/dashboard"
         ? {

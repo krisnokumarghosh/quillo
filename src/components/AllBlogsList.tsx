@@ -134,8 +134,8 @@ const AllBlogsList = ({
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {blogs.map((blog) => (
-            <BlogCard key={blog._id} blog={blog} />
+          {blogs.map((blog, ind) => (
+            <BlogCard key={ind} blog={blog} />
           ))}
 
           {loading &&
