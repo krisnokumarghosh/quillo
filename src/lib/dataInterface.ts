@@ -27,3 +27,16 @@ export interface Blog {
   thumbnail: string;
   createdAt: string;
 }
+
+export interface GetAllBlogsResponse {
+  blogs: Blog[];
+  total: number;
+  hasMore: boolean;
+}
+
+export interface GetAllBlogsParams {
+  search?: string;
+  category?: string;
+  page?: number;
+  limit?: number;
+}
