@@ -12,7 +12,7 @@ import Image from "next/image";
 const navLinks = [
   { name: "Home", href: "/", authRequired: false },
   { name: "Blogs", href: "/blogs", authRequired: false },
-  { name: "My Posts", href: "/my-posts", authRequired: true },
+  { name: "My Posts", href: "/dashboard/user/my-blogs", authRequired: true },
   { name: "Dashboard", href: "/dashboard", authRequired: true },
 ];
 

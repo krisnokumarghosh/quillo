@@ -21,3 +21,7 @@ export const getAllBlogs = async ({
 
   return serverFetch<GetAllBlogsResponse>(`/api/all/blogs?${params.toString()}`);
 };
+
+export const getBlogById = async (blogId: string) => {
+  return serverFetch<Blog>(`/api/blog/${blogId}`)
+}

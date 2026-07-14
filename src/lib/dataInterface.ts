@@ -40,3 +40,9 @@ export interface GetAllBlogsParams {
   page?: number;
   limit?: number;
 }
+
+export type Props = {
+  params: Promise<{
+    id: string;
+  }>;
+};
