@@ -1,6 +1,7 @@
 import Banner from "@/components/homepage/Banner";
 import CTABanner from "@/components/homepage/CTABanner";
 import FaqAndContact from "@/components/homepage/FaqAndContact";
+import FeaturedBlogs from "@/components/homepage/FeaturedBlogs";
 import HowItWorks from "@/components/homepage/HowItWorks";
 import ShutterReveal from "@/components/homepage/ShutterReveal";
 import StatsStrip from "@/components/homepage/StatsStrip";
@@ -17,6 +18,7 @@ export default function Home() {
       <Banner />
       <ShutterReveal>
         <HowItWorks />
+        <FeaturedBlogs/>
       <StatsStrip />
       <FaqAndContact />
       <CTABanner />

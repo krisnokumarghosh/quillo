@@ -20,7 +20,7 @@ const navLinks = [
 const legalLinks = [
   { name: "Privacy Policy", href: "/privacy" },
   { name: "Terms of Use", href: "/terms" },
-  { name: "Contact Us", href: "/contact" },
+  
 ];
 
 const socialLinks = [

@@ -1,19 +1,19 @@
-"use client"
+"use client";
 
-import { deleteBlogById } from "@/lib/actions/blogs";
-import { Blog } from "@/lib/dataInterface";
+import { deleteUserById } from "@/lib/actions/blogs";
+import { User } from "@/lib/dataInterface";
 import { errorToast, successToast } from "@/lib/toasts";
 import { TrashBin } from "@gravity-ui/icons";
 import { AlertDialog, Button } from "@heroui/react";
 import { useRouter } from "next/navigation";
 import React from "react";
 
-const BlogDeleteAlert = ({ blog }: { blog: Blog }) => {
+const UserDeleteAlert = ({ user }: { user: User }) => {
   const router = useRouter();
   const handleDelete = async () => {
     try {
-      const id = blog._id;
-      const deleteBlog = await deleteBlogById(id);
+      const id = user._id;
+      const deleteBlog = await deleteUserById(id);
       if (deleteBlog.success) {
         successToast(deleteBlog.message);
         router.refresh();
@@ -22,7 +22,6 @@ const BlogDeleteAlert = ({ blog }: { blog: Blog }) => {
       errorToast("Failed to delete blog");
     }
   };
-
   return (
     <AlertDialog>
       <Button className="flex items-center gap-1.5 px-4 py-2 rounded-full text-[13px] font-semibold text-red-600 bg-red-50 hover:bg-red-100 transition-colors duration-200 flex-none">
@@ -36,13 +35,13 @@ const BlogDeleteAlert = ({ blog }: { blog: Blog }) => {
             <AlertDialog.Header>
               <AlertDialog.Icon status="danger" />
               <AlertDialog.Heading>
-                Delete blog permanently?
+                Delete User permanently?
               </AlertDialog.Heading>
             </AlertDialog.Header>
             <AlertDialog.Body>
               <p>
-                This will permanently delete <strong>{blog.title}</strong> and
-                all of its data. This action cannot be undone.
+                This will permanently delete <strong>{user.name}</strong> and all of its
+                data. This action cannot be undone.
               </p>
             </AlertDialog.Body>
             <AlertDialog.Footer>
@@ -50,7 +49,7 @@ const BlogDeleteAlert = ({ blog }: { blog: Blog }) => {
                 Cancel
               </Button>
               <Button onClick={handleDelete} slot="close" variant="danger">
-                Delete Blog
+                Delete User
               </Button>
             </AlertDialog.Footer>
           </AlertDialog.Dialog>
@@ -60,4 +59,4 @@ const BlogDeleteAlert = ({ blog }: { blog: Blog }) => {
   );
 };
 
-export default BlogDeleteAlert;
+export default UserDeleteAlert;

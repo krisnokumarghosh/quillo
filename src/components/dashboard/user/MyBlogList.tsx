@@ -4,19 +4,10 @@ import { manropeFont } from "@/lib/fonts";
 import { Eye, TrashBin, Calendar } from "@gravity-ui/icons";
 import Image from "next/image";
 import Link from "next/link";
+import BlogDeleteAlert from "../BlogDeleteAlert";
+import { Blog } from "@/lib/dataInterface";
 
-interface Blog {
-  _id: string;
-  userId: string;
-  userName: string;
-  title: string;
-  description: string;
-  content: string;
-  category: string;
-  tags: string[];
-  thumbnail: string;
-  createdAt: string | Date;
-}
+
 
 const formatDate = (date: string | Date) => {
   return new Date(date).toLocaleDateString("en-US", {
@@ -27,10 +18,10 @@ const formatDate = (date: string | Date) => {
 
 const BlogCard = ({
   blog,
-  onDelete,
+ 
 }: {
   blog: Blog;
-  onDelete: (id: string) => void;
+  
 }) => {
   return (
     <div className="flex items-center justify-between gap-4 bg-white border border-[#778DA9]/15 rounded-2xl p-4 hover:border-[#415A77]/30 transition-colors duration-200">
@@ -77,23 +68,14 @@ const BlogCard = ({
             View
           </button>
         </Link>
-        <button
-          onClick={() => onDelete(blog._id)}
-          className="flex items-center gap-1.5 px-4 py-2 rounded-full text-[13px] font-semibold text-red-600 bg-red-50 hover:bg-red-100 transition-colors duration-200"
-        >
-          <TrashBin width={14} height={14} />
-          Delete
-        </button>
+        <BlogDeleteAlert blog={blog}/>
       </div>
     </div>
   );
 };
 
 const MyBlogsList = ({ blogs }: { blogs: Blog[] }) => {
-  const handleDelete = (id: string) => {
-    // TODO: call delete API/server action
-    console.log("delete blog:", id);
-  };
+ 
 
   return (
     <div>
@@ -113,7 +95,7 @@ const MyBlogsList = ({ blogs }: { blogs: Blog[] }) => {
       ) : (
         <div className="flex flex-col gap-3">
           {blogs.map((blog) => (
-            <BlogCard key={blog._id} blog={blog} onDelete={handleDelete} />
+            <BlogCard key={blog._id} blog={blog}  />
           ))}
         </div>
       )}

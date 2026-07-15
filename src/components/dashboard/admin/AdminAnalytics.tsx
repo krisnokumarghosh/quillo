@@ -146,7 +146,7 @@ const StatCard = ({
 
 const AdminAnalytics = ({ blogs, users }: AdminAnalyticsProps) => {
   const totalBlogs = blogs.length;
-  const totalUsers = users.length;
+   const totalUsers = users.filter((u) => u.role === "user").length;
   const getThisMonthCount = (items: { createdAt: string }[]) => {
     const now = new Date();
     return items.filter((item) => {

@@ -4,7 +4,7 @@ import { serverMutation } from "../core/server";
 import {
   AddBlogPayload,
   AddBlogResponse,
-  DeleteBlogResponse,
+  DeleteResponse,
 } from "../dataInterface";
 
 export const addBlog = async (data: AddBlogPayload) => {
@@ -12,8 +12,16 @@ export const addBlog = async (data: AddBlogPayload) => {
 };
 
 export const deleteBlogById = async (blogId: string) => {
-  return serverMutation<DeleteBlogResponse>(
+  return serverMutation<DeleteResponse>(
     `/api/d/blog/${blogId}`,
+    null,
+    "DELETE",
+  );
+};
+
+export const deleteUserById = async (userId: string) => {
+  return serverMutation<DeleteResponse>(
+    `/api/user/d/${userId}`,
     null,
     "DELETE",
   );

@@ -2,29 +2,33 @@
 
 import { User } from "@/lib/dataInterface";
 import { manropeFont } from "@/lib/fonts";
-import { TrashBin, Calendar, Globe } from "@gravity-ui/icons";
+import {  Calendar, Globe } from "@gravity-ui/icons";
 import Image from "next/image";
 import { useState } from "react";
-
+import UserDeleteAlert from "./UserDeleteAlert";
 
 const formatDate = (date: string) =>
-  new Date(date).toLocaleDateString("en-US", { month: "short", day: "numeric" });
+  new Date(date).toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+  });
 
-const UserCard = ({
-  user,
-  onDelete,
-}: {
-  user: User;
-  onDelete: (id: string) => void;
-}) => {
+const UserCard = ({ user }: { user: User }) => {
   return (
     <div className="flex items-center justify-between gap-4 bg-white border border-[#778DA9]/15 rounded-2xl p-4 hover:border-[#415A77]/30 transition-colors duration-200">
       <div className="flex items-center gap-4 min-w-0">
         <div className="relative w-14 h-14 rounded-xl overflow-hidden flex-none border border-[#778DA9]/15 bg-[#415A77]/10 flex items-center justify-center">
           {user.image ? (
-            <Image src={user.image} alt={user.name} fill className="object-cover" />
+            <Image
+              src={user.image}
+              alt={user.name}
+              fill
+              className="object-cover"
+            />
           ) : (
-            <span className={`${manropeFont.className} text-[#415A77] text-lg font-bold`}>
+            <span
+              className={`${manropeFont.className} text-[#415A77] text-lg font-bold`}
+            >
               {user.name?.[0]?.toUpperCase() ?? "U"}
             </span>
           )}
@@ -64,30 +68,21 @@ const UserCard = ({
         </div>
       </div>
 
-      <button
-        onClick={() => onDelete(user._id)}
-        className="flex items-center gap-1.5 px-4 py-2 rounded-full text-[13px] font-semibold text-red-600 bg-red-50 hover:bg-red-100 transition-colors duration-200 flex-none"
-      >
-        <TrashBin width={14} height={14} />
-        Delete
-      </button>
+      <UserDeleteAlert user={user}/>
     </div>
   );
 };
 
 const AllUsersList = ({ users }: { users: User[] }) => {
- const [userList, setUserList] = useState(
-    users.filter((user) => user.role === "user") // ✅ shudhu normal user rakha holo
+  const [userList, setUserList] = useState(
+    users.filter((user) => user.role === "user"), // ✅ shudhu normal user rakha holo
   );
-
-  const handleDelete = (id: string) => {
-    // TODO: call delete API/server action
-    setUserList((prev) => prev.filter((u) => u._id !== id));
-  };
 
   return (
     <div>
-      <h1 className={`${manropeFont.className} text-3xl font-bold text-[#0D1B2A]`}>
+      <h1
+        className={`${manropeFont.className} text-3xl font-bold text-[#0D1B2A]`}
+      >
         All <span className="text-[#415A77]">Users</span>
       </h1>
       <p className="text-sm text-[#1B263B]/60 mt-1 mb-6">
@@ -101,7 +96,7 @@ const AllUsersList = ({ users }: { users: User[] }) => {
       ) : (
         <div className="flex flex-col gap-3">
           {userList.map((user) => (
-            <UserCard key={user._id} user={user} onDelete={handleDelete} />
+            <UserCard key={user._id} user={user} />
           ))}
         </div>
       )}

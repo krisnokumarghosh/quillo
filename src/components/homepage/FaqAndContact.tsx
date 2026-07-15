@@ -1,8 +1,16 @@
 "use client";
 
 import { manropeFont } from "@/lib/fonts";
+import { successToast } from "@/lib/toasts";
 import { ChevronDown } from "@gravity-ui/icons";
-import { Button } from "@heroui/react";
+import {
+  Button,
+  FieldError,
+  Form,
+  Input,
+  TextArea,
+  TextField,
+} from "@heroui/react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 
@@ -82,8 +90,16 @@ const FaqItem = ({
 const FaqAndContact = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
+  const handleSubmit = (e: React.SyntheticEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    successToast("Thanks for youe message. we'll get back to you soon.");
+  };
+
   return (
-    <section className="relative w-full bg-white py-15 md:py-28 px-6">
+    <section
+      id="contact"
+      className="relative w-full  bg-white py-15 md:py-28 px-6"
+    >
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <motion.div
@@ -139,25 +155,39 @@ const FaqAndContact = () => {
               Drop us a message, we&apos;ll get back to you soon.
             </p>
 
-            <div className="flex flex-col gap-4">
-              <input
-                type="text"
-                placeholder="Your Name"
-                className="w-full px-4 py-3 rounded-xl bg-white/5 border border-[#778DA9]/25 text-[#E0E1DD] placeholder:text-[#778DA9] text-sm outline-none focus:border-[#415A77] transition-colors duration-200"
-              />
-              <input
-                type="email"
-                placeholder="Your Email"
-                className="w-full px-4 py-3 rounded-xl bg-white/5 border border-[#778DA9]/25 text-[#E0E1DD] placeholder:text-[#778DA9] text-sm outline-none focus:border-[#415A77] transition-colors duration-200"
-              />
-              <textarea
-                rows={4}
-                placeholder="Your Message"
-                className="w-full px-4 py-3 rounded-xl bg-white/5 border border-[#778DA9]/25 text-[#E0E1DD] placeholder:text-[#778DA9] text-sm outline-none focus:border-[#415A77] transition-colors duration-200 resize-none"
-              />
-              <Button className="bg-[#415A77] text-[#E0E1DD] hover:bg-[#415A77]/90 mt-2">
-                Send Message
-              </Button>
+            <div>
+              <Form onSubmit={handleSubmit} className="flex flex-col gap-4">
+                <TextField isRequired>
+                  <Input
+                    type="text"
+                    placeholder="Your Name"
+                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-[#778DA9]/25 text-[#E0E1DD] placeholder:text-[#778DA9] text-sm outline-none focus:ring-[#415A77] transition-colors duration-200"
+                  />
+                  <FieldError className="text-xs text-red-500 mt-1" />
+                </TextField>
+                <TextField isRequired>
+                  <Input
+                    type="email"
+                    placeholder="Your Email"
+                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-[#778DA9]/25 text-[#E0E1DD] placeholder:text-[#778DA9] text-sm outline-none focus:ring-[#415A77] transition-colors duration-200"
+                  />
+                  <FieldError className="text-xs text-red-500 mt-1" />
+                </TextField>
+                <TextField isRequired>
+                  <TextArea
+                    rows={4}
+                    placeholder="Your Message"
+                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-[#778DA9]/25 text-[#E0E1DD] placeholder:text-[#778DA9] text-sm outline-none focus:ring-[#415A77] transition-colors duration-200 resize-none"
+                  />
+                  <FieldError className="text-xs text-red-500 mt-1" />
+                </TextField>
+                <Button
+                  type="submit"
+                  className="bg-[#415A77] text-[#E0E1DD] hover:bg-[#415A77]/90 mt-2"
+                >
+                  Send Message
+                </Button>
+              </Form>
             </div>
           </motion.div>
         </div>
