@@ -117,7 +117,6 @@ const UserCard = ({ user }: { user: SidebarUser }) => {
 const DashboardSideBar = ({ user }: { user: SidebarUser }) => {
   return (
     <>
-      {/* Desktop sidebar */}
       <aside className="hidden md:flex w-64 flex-none h-screen sticky top-0 flex-col bg-[#0D1B2A] border-r border-[#778DA9]/10">
         <Link
           href="/"
@@ -145,7 +144,6 @@ const DashboardSideBar = ({ user }: { user: SidebarUser }) => {
         </div>
       </aside>
 
-      {/* Mobile top bar + drawer */}
       <div className="md:hidden flex justify-between items-center h-14 border-b border-[#778DA9]/10 bg-[#0D1B2A] px-4">
         <Drawer>
           <Button className="bg-transparent">

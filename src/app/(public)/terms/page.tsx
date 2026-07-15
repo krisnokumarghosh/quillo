@@ -295,7 +295,6 @@ const sections = [
 const TermsAndServicesPage = () => {
   return (
     <div className="bg-white min-h-screen">
-      {/* Hero */}
       <div className="bg-linear-to-b from-[#778DA9]/15 via-[#E0E1DD]/25 to-white pt-32 pb-16 px-6">
         <div className="max-w-4xl mx-auto text-center">
           <span className="inline-block text-sm font-semibold text-[#415A77] tracking-wide uppercase mb-3">
@@ -311,7 +310,6 @@ const TermsAndServicesPage = () => {
       </div>
 
       <div className="max-w-6xl mx-auto px-6 py-16 grid grid-cols-1 lg:grid-cols-[240px_1fr] gap-12">
-        {/* Sticky table of contents — desktop only */}
         <aside className="hidden lg:block">
           <div className="sticky top-28">
             <p className="text-xs font-semibold text-[#778DA9] tracking-wide uppercase mb-4">
@@ -331,9 +329,7 @@ const TermsAndServicesPage = () => {
           </div>
         </aside>
 
-        {/* Content */}
         <div className="min-w-0">
-          {/* Intro */}
           <p className="text-[15px] text-[#1B263B]/70 leading-relaxed mb-12 pb-8 border-b border-[#778DA9]/15">
             Welcome to Quillo. By creating an account, publishing content, or
             using our services, you agree to these Terms &amp; Services.

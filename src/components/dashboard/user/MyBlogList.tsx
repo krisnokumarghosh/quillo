@@ -1,7 +1,7 @@
 "use client";
 
 import { manropeFont } from "@/lib/fonts";
-import { Eye, TrashBin, Calendar } from "@gravity-ui/icons";
+import { Eye,  Calendar } from "@gravity-ui/icons";
 import Image from "next/image";
 import Link from "next/link";
 import BlogDeleteAlert from "../BlogDeleteAlert";

@@ -14,6 +14,7 @@ const navLinks = [
   { name: "Blogs", href: "/blogs", authRequired: false },
   { name: "My Posts", href: "/dashboard/user/my-blogs", authRequired: true },
   { name: "Dashboard", href: "/dashboard", authRequired: true },
+  { name: "Terms", href: "/terms", authRequired: false },
 ];
 
 const Navbar = () => {
@@ -93,7 +94,7 @@ const Navbar = () => {
             <div className="flex items-center gap-5">
               {user?.image ? (
                 <Image
-                  alt="user image"
+                  alt=""
                   height={35}
                   width={35}
                   src={user?.image}

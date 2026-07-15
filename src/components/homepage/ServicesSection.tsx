@@ -8,7 +8,9 @@ import {
   ArrowUpRight,
   CommentDot,
 } from "@gravity-ui/icons";
+import { Button } from "@heroui/react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const headingVariants = {
   hidden: { opacity: 0, y: 24 },
@@ -41,7 +43,7 @@ const cardVariants = {
 
 const ServicesSection = () => {
   return (
-    <section className="relative w-full py-16 md:py-28 px-6">
+    <section className="relative w-full py-10 md:py-28 px-6">
       <div className="max-w-6xl mx-auto">
         {/* Section heading */}
         <motion.div
@@ -78,7 +80,7 @@ const ServicesSection = () => {
             variants={cardVariants}
             whileHover={{ y: -6 }}
             transition={{ type: "spring", stiffness: 300, damping: 22 }}
-            className="group relative md:col-span-2 md:row-span-2 rounded-3xl bg-gradient-to-br from-[#0D1B2A] via-[#1B263B] to-[#415A77] p-8 md:p-10 overflow-hidden flex flex-col justify-between min-h-[320px] md:min-h-[420px]"
+            className="group relative md:col-span-2 md:row-span-2 rounded-3xl bg-linear-to-br from-[#0D1B2A] via-[#1B263B] to-[#415A77] p-8 md:p-10 overflow-hidden flex flex-col justify-between min-h-80 md:min-h-105"
           >
             {/* Decorative element with ambient pulse */}
             <motion.div
@@ -113,10 +115,13 @@ const ServicesSection = () => {
               </p>
             </div>
 
-            <div className="relative flex items-center gap-2 text-sm font-semibold text-[#E0E1DD] mt-8">
+            <Link href={"/dashboard/user/add-blog"} className="w-fit">
+            <Button className="relative flex items-center gap-2 text-sm font-semibold text-[#E0E1DD] mt-8 bg-transparent">
+
               Start writing
               <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
-            </div>
+            </Button>
+            </Link>
           </motion.div>
 
           {/* Small card — Discovery */}

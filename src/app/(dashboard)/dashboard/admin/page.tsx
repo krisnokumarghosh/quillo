@@ -1,10 +1,15 @@
 import AdminAnalytics from '@/components/dashboard/admin/AdminAnalytics';
 import { getAllBlogs, getAllUsers } from '@/lib/api/blogs';
+import { Metadata } from 'next';
 
+export const metadata: Metadata = {
+  title: "Analytics | Admin",
+  description: "A modern blogging platform to write and share your stories.",
+};
 
 const AdminAnalyticsPage = async () => {
   const allUsers = await getAllUsers();
-  const { blogs: allBlogs } = await getAllBlogs({ limit: 1000 }); // shob blog anার jonyo boro limit
+  const { blogs: allBlogs } = await getAllBlogs({ limit: 1000 }); 
 
   return (
     <div>

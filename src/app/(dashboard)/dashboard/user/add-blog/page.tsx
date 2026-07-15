@@ -1,6 +1,5 @@
 import AddBlogForm from '@/components/dashboard/user/AddBlogForm';
 import { Metadata } from 'next';
-import React from 'react';
 
 export const metadata: Metadata = {
   title: "Add Blog | User",

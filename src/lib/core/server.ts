@@ -17,7 +17,6 @@ export const serverMutation = async <T = unknown>(
   }
 
   const res = await fetch(`${baseUrl}${path}`, options);
-  console.log(res.status);
   return await res.json();
 };
 

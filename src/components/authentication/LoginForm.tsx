@@ -67,7 +67,6 @@ const LoginForm = () => {
         className="relative w-full max-w-md"
       >
         <div className="bg-white/70 backdrop-blur-xl border border-[#778DA9]/20 rounded-3xl shadow-[0_20px_60px_rgba(13,27,42,0.12)] px-7 py-8 md:px-9 md:py-9">
-          {/* Logo */}
           <Link
             href="/"
             className="flex items-center gap-2 justify-center mb-6"
@@ -82,7 +81,6 @@ const LoginForm = () => {
             </span>
           </Link>
 
-          {/* Heading */}
           <div className="text-center mb-6">
             <h1
               className={`${manropeFont.className} text-xl md:text-[1.75rem] font-bold text-[#0D1B2A] tracking-tight`}
@@ -94,7 +92,6 @@ const LoginForm = () => {
             </p>
           </div>
 
-          {/* Google Sign Up */}
           <Button
             onClick={handleGoogleSignup}
             className="w-full flex items-center justify-center gap-2.5 h-11 rounded-full border border-[#778DA9]/25 bg-white hover:bg-[#E0E1DD]/40 text-[#0D1B2A] text-sm font-semibold transition-colors duration-200 mb-5"
@@ -103,14 +100,12 @@ const LoginForm = () => {
             Continue with Google
           </Button>
 
-          {/* Divider */}
           <div className="flex items-center gap-3 mb-5">
             <div className="flex-1 h-px bg-[#778DA9]/20" />
             <span className="text-xs text-[#1B263B]/40 font-medium">OR</span>
             <div className="flex-1 h-px bg-[#778DA9]/20" />
           </div>
 
-          {/* Form */}
           <Form className="flex flex-col gap-4" onSubmit={handleLogin}>
             <TextField
               isRequired
@@ -167,7 +162,6 @@ const LoginForm = () => {
             </Button>
           </Form>
 
-          {/* Footer link */}
           <p className="text-center text-sm text-[#1B263B]/70 mt-6">
             Don&apos;t have an account?{" "}
             <Link

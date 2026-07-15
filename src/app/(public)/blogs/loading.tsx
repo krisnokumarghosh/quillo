@@ -1,4 +1,3 @@
-// app/blogs/loading.tsx
 
 import BlogCardSkeletonGrid from "@/components/BlogCardSkeletonGrid";
 

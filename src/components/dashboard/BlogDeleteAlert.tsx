@@ -6,7 +6,6 @@ import { errorToast, successToast } from "@/lib/toasts";
 import { TrashBin } from "@gravity-ui/icons";
 import { AlertDialog, Button } from "@heroui/react";
 import { useRouter } from "next/navigation";
-import React from "react";
 
 const BlogDeleteAlert = ({ blog }: { blog: Blog }) => {
   const router = useRouter();

@@ -96,7 +96,6 @@ const UserProfile = ({ user }: { user: User }) => {
   return (
     <div className="min-h-screen  py-14 px-4 sm:px-6 lg:px-8">
       <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-[280px_1fr] rounded-[28px] overflow-hidden shadow-sm border border-[#778DA9]/20 bg-white">
-        {/* LEFT: Identity panel */}
         <aside className="bg-[#0D1B2A] relative px-8 py-10 flex flex-col">
           <div
             className="absolute inset-0 opacity-[0.06] pointer-events-none"
@@ -156,7 +155,6 @@ const UserProfile = ({ user }: { user: User }) => {
           </div>
         </aside>
 
-        {/* RIGHT: Details */}
         <section className="px-8 py-10">
           <div className="flex items-start justify-between mb-8">
             <div>
@@ -175,7 +173,6 @@ const UserProfile = ({ user }: { user: User }) => {
             </button>
           </div>
 
-          {/* Section: Account */}
           <div className="mb-7">
             <SectionLabel>Account</SectionLabel>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">

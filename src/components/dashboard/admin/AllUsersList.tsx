@@ -75,7 +75,7 @@ const UserCard = ({ user }: { user: User }) => {
 
 const AllUsersList = ({ users }: { users: User[] }) => {
   const [userList, setUserList] = useState(
-    users.filter((user) => user.role === "user"), // ✅ shudhu normal user rakha holo
+    users.filter((user) => user.role === "user"), 
   );
 
   return (

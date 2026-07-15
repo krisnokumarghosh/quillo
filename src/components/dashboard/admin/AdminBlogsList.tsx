@@ -82,11 +82,10 @@ const AdminBlogsList = ({
   const [loading, setLoading] = useState(false);
 
   const loadMoreRef = useRef<HTMLDivElement | null>(null);
-  const loadingRef = useRef(false); // ✅ latest loading value track korার jonyo
+  const loadingRef = useRef(false); 
   const hasMoreRef = useRef(hasMore);
   const pageRef = useRef(page);
 
-  // Refs ke shob shomoy sync rakho
   useEffect(() => {
     loadingRef.current = loading;
     hasMoreRef.current = hasMore;
@@ -94,7 +93,7 @@ const AdminBlogsList = ({
   }, [loading, hasMore, page]);
 
   const loadMore = useCallback(async () => {
-    if (loadingRef.current || !hasMoreRef.current) return; // ✅ ref theke check
+    if (loadingRef.current || !hasMoreRef.current) return; 
     loadingRef.current = true;
     setLoading(true);
 
@@ -103,7 +102,7 @@ const AdminBlogsList = ({
 
     setBlogs((prev) => {
       const existingIds = new Set(prev.map((b) => b._id));
-      const newUnique = res.blogs.filter((b) => !existingIds.has(b._id)); // ✅ extra safety
+      const newUnique = res.blogs.filter((b) => !existingIds.has(b._id)); 
       return [...prev, ...newUnique];
     });
 
@@ -111,7 +110,7 @@ const AdminBlogsList = ({
     setPage(nextPage);
     setLoading(false);
     loadingRef.current = false;
-  }, []); // ✅ empty dependency — function ekবারই banবে
+  }, []); 
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -126,8 +125,7 @@ const AdminBlogsList = ({
     return () => {
       if (currentRef) observer.unobserve(currentRef);
     };
-  }, [loadMore]); // loadMore ekhon stable, tai eta shudhu ekবার run hবে
-
+  }, [loadMore]); 
   
 
   return (

@@ -2,6 +2,14 @@ import BlogDetails from "@/components/BlogDetails";
 import { getBlogById } from "@/lib/api/blogs";
 import { Props } from "@/lib/dataInterface";
 
+export const generateMetadata = async ({ params }: Props) => {
+  const { id } = await params;
+  const blog = await getBlogById(id);
+  return {
+    title: `${blog.title}`,
+  };
+};
+
 const BlogDetailsPage = async ({ params }: Props) => {
   const { id } = await params;
   const blog = await getBlogById(id);

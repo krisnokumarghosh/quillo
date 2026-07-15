@@ -79,11 +79,9 @@ const AddBlogForm = () => {
       }
     );
 
-    console.log("Status:", res.status);
 
     const data = await res.json();
 
-    console.log("ImgBB Response:", data);
 
     if (!data.success) {
       throw new Error("Image upload failed");
@@ -100,7 +98,7 @@ const AddBlogForm = () => {
   e.preventDefault();
 
   const form = e.currentTarget;
-  const formData = new FormData(form); // <-- শুরুতেই
+  const formData = new FormData(form); 
 
   if (tags.length === 0) return errorToast("Add at least one tag");
   if (!thumbnail) return errorToast("Please upload a thumbnail");
@@ -109,11 +107,9 @@ const AddBlogForm = () => {
 
   setSubmitting(true);
 
-  console.log("Uploading image");
 
   const thumbnailUrl = await uploadToImgBB(thumbnail);
 
-  console.log("Image uploaded", thumbnailUrl);
 
   const payload = {
     userId: user?.id as string,
@@ -181,7 +177,6 @@ const AddBlogForm = () => {
           <FieldError className="text-[11px] text-red-500" />
         </TextField>
 
-        {/* Category */}
         <div className="flex flex-col gap-1.5">
           <Label className={labelStyles}>Category</Label>
           <Select name="category" isRequired placeholder="Select one">
@@ -207,7 +202,6 @@ const AddBlogForm = () => {
           </Select>
         </div>
 
-        {/* Tags */}
         <div className="flex flex-col gap-1.5">
           <label className={labelStyles}>
             Tags{" "}
@@ -243,7 +237,6 @@ const AddBlogForm = () => {
           </div>
         </div>
 
-        {/* Thumbnail */}
         <div className="flex flex-col gap-1.5">
           <Label className={labelStyles}>Thumbnail Image</Label>
           <Label className="cursor-pointer">
@@ -290,7 +283,6 @@ const AddBlogForm = () => {
           </Label>
         </div>
 
-        {/* Actions */}
         <div className="flex gap-3 pt-2 pb-8">
           <Button
             type="reset"

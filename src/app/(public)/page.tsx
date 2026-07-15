@@ -1,4 +1,5 @@
 import Banner from "@/components/homepage/Banner";
+import CategoriesSection from "@/components/homepage/CategoriesSection";
 import CTABanner from "@/components/homepage/CTABanner";
 import FaqAndContact from "@/components/homepage/FaqAndContact";
 import FeaturedBlogs from "@/components/homepage/FeaturedBlogs";
@@ -19,11 +20,12 @@ export default function Home() {
       <Banner />
       <ShutterReveal>
         <HowItWorks />
-        <FeaturedBlogs/>
-      <StatsStrip />
-      <ServicesSection/>
-      <FaqAndContact />
-      <CTABanner />
+        <FeaturedBlogs />
+        <StatsStrip />
+        <ServicesSection />
+        <CategoriesSection />
+        <FaqAndContact />
+        <CTABanner />
       </ShutterReveal>
     </div>
   );

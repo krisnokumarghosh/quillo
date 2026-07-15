@@ -22,13 +22,11 @@ interface AdminAnalyticsProps {
 
 const CHART_COLORS = ["#0D1B2A", "#415A77", "#778DA9", "#A9BCD0"];
 
-// ---- Data crunching helpers ----
 
 const getMonthlyGrowth = (blogs: Blog[]) => {
   const monthMap: Record<string, number> = {};
   const now = new Date();
 
-  // last 6 months, shuruteই 0 diye initialize kora holo
   for (let i = 5; i >= 0; i--) {
     const d = new Date(now.getFullYear(), now.getMonth() - i, 1);
     const key = d.toLocaleDateString("en-US", { month: "short" });
@@ -110,7 +108,6 @@ const timeAgo = (date: string) => {
   return `${days} day${days > 1 ? "s" : ""} ago`;
 };
 
-// ---- Stat card ----
 
 const StatCard = ({
   label,
@@ -142,7 +139,6 @@ const StatCard = ({
   </div>
 );
 
-// ---- Main component ----
 
 const AdminAnalytics = ({ blogs, users }: AdminAnalyticsProps) => {
   const totalBlogs = blogs.length;
@@ -184,7 +180,6 @@ const AdminAnalytics = ({ blogs, users }: AdminAnalyticsProps) => {
 
   return (
     <div className="flex flex-col gap-5 px-3">
-      {/* Stat cards */}
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
         <StatCard
           label="Total Blogs"
@@ -209,9 +204,7 @@ const AdminAnalytics = ({ blogs, users }: AdminAnalyticsProps) => {
         />
       </div>
 
-      {/* Charts row */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
-        {/* Monthly growth bar chart */}
         <div className="lg:col-span-2 bg-white border border-[#778DA9]/15 rounded-2xl p-5">
           <div className="flex items-center justify-between mb-1">
             <h3
@@ -263,7 +256,6 @@ const AdminAnalytics = ({ blogs, users }: AdminAnalyticsProps) => {
           </ResponsiveContainer>
         </div>
 
-        {/* Category split pie chart */}
         <div className="bg-white border border-[#778DA9]/15 rounded-2xl p-5">
           <h3
             className={`${manropeFont.className} text-[15px] font-bold text-[#0D1B2A]`}
@@ -329,9 +321,7 @@ const AdminAnalytics = ({ blogs, users }: AdminAnalyticsProps) => {
         </div>
       </div>
 
-      {/* Top authors + Recent activity */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-        {/* Top authors */}
         <div className="bg-white border border-[#778DA9]/15 rounded-2xl p-5">
           <h3
             className={`${manropeFont.className} text-[15px] font-bold text-[#0D1B2A] mb-4`}
@@ -360,7 +350,6 @@ const AdminAnalytics = ({ blogs, users }: AdminAnalyticsProps) => {
           </div>
         </div>
 
-        {/* Recent activity */}
         <div className="bg-white border border-[#778DA9]/15 rounded-2xl p-5">
           <div className="flex items-center justify-between mb-4">
             <h3
