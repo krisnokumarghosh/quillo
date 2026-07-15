@@ -98,7 +98,7 @@ const Navbar = () => {
                   height={35}
                   width={35}
                   src={user?.image}
-                  className="rounded-full"
+                  className="rounded-full h-8.75 w-8.75 object-cover"
                 />
               ) : (
                 <Avatar>
