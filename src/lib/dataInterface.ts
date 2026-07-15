@@ -57,3 +57,8 @@ export interface User {
   createdAt: string;
   updatedAt: string;
 }
+
+export type DeleteBlogResponse = {
+  success: boolean;
+  message: string;
+};
